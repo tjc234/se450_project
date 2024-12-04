@@ -213,6 +213,10 @@ class PriorityQueue:
     def display(self):
         # display all elements in the priority queue
         return [item[0] for item in self.items]
+    
+    def clear(self):
+        # clear the priority queue
+        self.items = []
 
 # class to handle graphs
 class Graph:
@@ -230,10 +234,14 @@ class Graph:
 
     def remove_edge(self, node1, node2):
         # remove an edge between node1 and node2
-        if node1 in self.graph and node2 in self.graph[node1]:
-            self.graph[node1].remove(node2)
-        if node2 in self.graph and node1 in self.graph[node2]:
-            self.graph[node2].remove(node1)
+        if node1 not in self.graph or node2 not in self.graph[node1]:
+            raise ValueError(f"Edge ({node1}, {node2}) not found")
+        if node2 not in self.graph or node1 not in self.graph[node2]:
+            raise ValueError(f"Edge ({node2}, {node1}) not found")
+
+        # Remove the edge in both directions
+        self.graph[node1].remove(node2)
+        self.graph[node2].remove(node1)
 
     def display(self):
         # display all nodes and their adjacent nodes

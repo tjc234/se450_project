@@ -35,7 +35,7 @@ def random_stack_operations():
         sleep(0.01) 
 
 
-# randomized test generator for queue
+# randomzed test generator for queue
 def random_queue_operations():
     # create a queue
     queue = Queue()
@@ -103,7 +103,7 @@ def random_bst_operations():
     # create a binary search tree
     bst = BinarySearchTree()
 
-    # binary search tree operations as a list
+    # binary search tree operation as a list
     operations = ['insert', 'delete', 'search', 'clear', 'inorder']
 
     # run 100 random operations
