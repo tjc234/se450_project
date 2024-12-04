@@ -180,6 +180,51 @@ class BinarySearchTree:
         # clear the binary search tree
         self.root = None
 
+    def delete(self, key):
+        self.root = self._delete(self.root, key)
+
+    def _delete(self, node, key):
+        # if the node is none, return none
+        if node is None:
+            return node
+
+        # if the key to be deleted is smaller than the node's key, go to the left subtree
+        if key < node.key:
+            node.left = self._delete(node.left, key)
+
+        # if the key to be deleted is larger than the node's key, go to the right subtree
+        elif key > node.key:
+            node.right = self._delete(node.right, key)
+
+        # if the key is the same as the node's key, this is the node to be deleted
+        else:
+            # node with only one child or no child
+            if node.left is None:
+                temp = node.right
+                node = None
+                return temp
+            elif node.right is None:
+                temp = node.left
+                node = None
+                return temp
+
+            # node with two children: get the inorder successor (smallest in the right subtree)
+            temp = self._min_value_node(node.right)
+
+            # copy the inorder successor's content to this node
+            node.key = temp.key
+
+            # dlete the inorder successor
+            node.right = self._delete(node.right, temp.key)
+
+        return node
+
+    def _min_value_node(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current
+
 # class to handle priority queues
 class PriorityQueue:
     def __init__(self):
@@ -223,6 +268,11 @@ class Graph:
     def __init__(self):
         self.graph = {}  # store graph as a dictionary of nodes
 
+    def add_node(self, node):
+        # add a node to the graph (initialize an empty list of neighbors)
+        if node not in self.graph:
+            self.graph[node] = []
+
     def add_edge(self, node1, node2):
         # add an undirected edge between node1 and node2
         if node1 not in self.graph:
@@ -239,9 +289,21 @@ class Graph:
         if node2 not in self.graph or node1 not in self.graph[node2]:
             raise ValueError(f"Edge ({node2}, {node1}) not found")
 
-        # Remove the edge in both directions
+        # remove the edge in both directions
         self.graph[node1].remove(node2)
         self.graph[node2].remove(node1)
+
+    def remove_node(self, node):
+        # remove the node and all edges associated with it
+        if node not in self.graph:
+            raise ValueError(f"Node {node} not found")
+
+        # Remove edges from other nodes to this node
+        for neighbor in self.graph[node]:
+            self.graph[neighbor].remove(node)
+
+        # Finally, remove the node itself
+        del self.graph[node]
 
     def display(self):
         # display all nodes and their adjacent nodes

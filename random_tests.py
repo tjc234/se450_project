@@ -66,7 +66,6 @@ def random_queue_operations():
         # small sleep to simulate delay
         sleep(0.01)
 
-# randomized test generator for linked list
 def random_linked_list_operations():
     # create a linked list
     linked_list = LinkedList()
@@ -82,9 +81,11 @@ def random_linked_list_operations():
         if operation == 'insert':
             linked_list.insert(random.randint(1, 100))
 
-        # delete random number between 1-100
+        # delete random number between 1-100 if it exists
         elif operation == 'delete':
-            linked_list.delete(random.randint(1, 100))
+            value_to_delete = random.randint(1, 100)
+            if linked_list.search(value_to_delete):
+                linked_list.delete(value_to_delete)
 
         # search random number between 1-100
         elif operation == 'search':
@@ -95,7 +96,7 @@ def random_linked_list_operations():
             linked_list.clear()
 
         # small sleep to simulate delay
-        sleep(0.01) 
+        sleep(0.01)
 
 
 # randomized test generator for binary search tree
