@@ -53,7 +53,7 @@ class TestDataStructures(unittest.TestCase):
         with self.assertRaises(IndexError):
             queue.dequeue()
 
-    # linkedlist tests
+    # linked list tests
     def test_linked_list_operations(self):
         # create a linked list
         linked_list = LinkedList()
@@ -94,7 +94,7 @@ class TestDataStructures(unittest.TestCase):
         bst.clear()
         self.assertEqual(bst.inorder(), [])
 
-    # priorityqueue tests
+    # priority queue tests
     def test_priority_queue_operations(self):
         # create a priority queue
         pq = PriorityQueue()
@@ -137,5 +137,3 @@ class TestDataStructures(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-    

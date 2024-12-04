@@ -66,6 +66,7 @@ def random_queue_operations():
         # small sleep to simulate delay
         sleep(0.01)
 
+
 def random_linked_list_operations():
     # create a linked list
     linked_list = LinkedList()
@@ -135,12 +136,10 @@ def random_bst_operations():
         sleep(0.01)   
 
 
-
 # randomized test generator for priority queue
 def random_pq_operations():
     # create a priority queue
     pq = PriorityQueue() 
-
 
     # priority queue operations as a list
     operations = ['enqueue', 'dequeue', 'peek', 'clear']
@@ -167,6 +166,7 @@ def random_pq_operations():
 
         # small sleep to simulate delay
         sleep(0.01)
+
 
 # randomized test generator for hraph
 def random_graph_operations():
