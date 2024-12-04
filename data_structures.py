@@ -131,9 +131,9 @@ class LinkedList:
 # node class for binary search tree
 class TreeNode:
     def __init__(self, key):
-        self.key = key  # store the value of the node
-        self.left = None  # pointer to the left child
-        self.right = None  # pointer to the right child
+        self.key = key 
+        self.left = None 
+        self.right = None
 
 # class to handle binary search trees
 class BinarySearchTree:
@@ -269,7 +269,7 @@ class Graph:
         self.graph = {}  # store graph as a dictionary of nodes
 
     def add_node(self, node):
-        # add a node to the graph (initialize an empty list of neighbors)
+        # add a node to the graph
         if node not in self.graph:
             self.graph[node] = []
 
@@ -302,7 +302,7 @@ class Graph:
         for neighbor in self.graph[node]:
             self.graph[neighbor].remove(node)
 
-        # Finally, remove the node itself
+        # finally, remove the node itself
         del self.graph[node]
 
     def display(self):
@@ -322,7 +322,7 @@ def main():
     stack.clear()
     print("Stack after clearing:", stack.display())
 
-    # eueue example use
+    # queue example use
     queue = Queue()
     queue.enqueue(10)
     queue.enqueue(20)

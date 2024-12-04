@@ -180,7 +180,7 @@ def random_graph_operations():
     for _ in range(100):
         operation = random.choice(operations)
 
-        # add edge between two random nodes
+        # add edge between two randm nodes
         if operation == 'add_edge':
             node1 = random.choice(['A', 'B', 'C', 'D', 'E'])
             node2 = random.choice(['A', 'B', 'C', 'D', 'E'])
@@ -214,6 +214,7 @@ def random_graph_operations():
 
         # small sleep to simulate delay
         sleep(0.01)
+
 
 # runn all randomized tests
 if __name__ == "__main__":
